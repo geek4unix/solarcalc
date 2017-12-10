@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<style>
+#slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+</style>
+<body>
+
+<h1>Watts / Voltages to Amps Converter</h1>
+<p>Drag the sliders set Amps, Voltage and runtime.</p>
+
+<div id="slidecontainer">
+<p>Watts: <span id="watts"></span></p>
+  <input type="range" min="1" max="500" value="50" class="slider" id="myRange1"> <p>Voltage: <span id="voltage"></span></p>
+  <input type="range" min="1" max="48" value="12" class="slider" id="myRange2">
+<p>Amps: <span id="amps"></span></p>
+  <input type="text" value="" class="slider" id="myRange3">
+<p>Runtime Hours: <span id="runtime_hours"></span></p>
+  <input type="range" min="1" max="99" value="12" class="slider" id="myRange4">
+  <p>Ah: <span id="amp_hours"></span></p>
+  <input type="text" value="" class="slider" id="myRange5">
+  <p>Battery Depth %: <span id="batt_depth"></span></p>
+  <input type="range" min="50" max="80" value="25" class="slider" id="myRange6">
+  <p>Loss %: <span id="loss_perc"></span></p>
+  <input type="range" min="5" max="20" value="5" class="slider" id="myRange7">
+  <p>Battery Pack Size: <span id="batt_pack_size"></span></p>
+  <input type="text" value="" class="slider" id="myRange8">
+</div>
+
+<script>
+
+// Declare a function
+function calc() { 
+  
+  slider3.value = (slider1.value / slider2.value);
+  output3.innerHTML = (slider1.value / slider2.value);
+  slider5.value = (slider3.value * slider4.value)
+  var tmp = ((slider6.value/100)*(slider5.value))-((slider7.value/100)*(slider5.value));
+  var tmp2 = (slider5.value / tmp) * slider5.value;
+  slider8.value = tmp2;
+  
+  }
+var slider1 = document.getElementById("myRange1");
+var slider2 = document.getElementById("myRange2");
+var slider3 = document.getElementById("myRange3");
+var slider4 = document.getElementById("myRange4");
+var slider5 = document.getElementById("myRange5");
+var slider6 = document.getElementById("myRange6");
+var slider7 = document.getElementById("myRange7");
+var slider8 = document.getElementById("myRange8");
+
+
+
+var output1 = document.getElementById("watts");
+output1.innerHTML = slider1.value;
+var output2 = document.getElementById("voltage");
+output2.innerHTML = slider2.value;
+var output3 = document.getElementById("amps");
+output3.innerHTML = slider3.value;
+var output4 = document.getElementById("runtime_hours");
+output4.innerHTML = slider4.value;
+var output5 = document.getElementById("amp_hours");
+output5.innerHTML = slider5.value;
+var output6 = document.getElementById("batt_depth");
+output6.innerHTML = slider6.value;
+var output7 = document.getElementById("loss_perc");
+output7.innerHTML = slider7.value;
+var output8 = document.getElementById("batt_pack_size");
+output8.innerHTML = slider8.value;
+
+
+
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+  calc();
+}
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+  calc();
+}
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+  calc();
+}
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+  calc();
+}
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+  calc();
+}
+slider6.oninput = function() {
+  output6.innerHTML = this.value;
+  calc();
+}
+slider7.oninput = function() {
+  output7.innerHTML = this.value;
+  calc();
+}
+slider8.oninput = function() {
+  output8.innerHTML = this.value;
+  calc();
+}
+
+</script>
+
+</body>
+</html>
+
