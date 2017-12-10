@@ -38,8 +38,8 @@
 </style>
 <body>
 
-<h1>Watts / Voltages to Amps Converter</h1>
-<p>Drag the sliders set Amps, Voltage and runtime.</p>
+<h1>Watts / Voltages to Amps Converter / Amp Hours Runtime</h1>
+<p>Drag the sliders set Amps, Voltage and runtime. See the battery Ah requirement and recommendation at the bottom</p>
 
 <div id="slidecontainer">
 <p>Watts: <span id="watts"></span></p>
@@ -51,26 +51,26 @@
   <input type="range" min="1" max="99" value="12" class="slider" id="myRange4">
   <p>Ah: <span id="amp_hours"></span></p>
   <input type="text" value="" class="slider" id="myRange5">
-  <p>Battery Depth %: <span id="batt_depth"></span></p>
+  <p>Battery Depth of Discharge %: <span id="batt_depth"></span></p>
   <input type="range" min="50" max="80" value="25" class="slider" id="myRange6">
   <p>Loss %: <span id="loss_perc"></span></p>
   <input type="range" min="5" max="20" value="5" class="slider" id="myRange7">
-  <p>Battery Pack Size: <span id="batt_pack_size"></span></p>
+  <p>Battery Pack Size (Ah - All battery types): <span id="batt_pack_size"></span></p>
   <input type="text" value="" class="slider" id="myRange8">
 </div>
 
 <script>
 
 // Declare a function
-function calc() { 
-  
+function calc() {
+
   slider3.value = (slider1.value / slider2.value);
   output3.innerHTML = (slider1.value / slider2.value);
   slider5.value = (slider3.value * slider4.value)
   var tmp = ((slider6.value/100)*(slider5.value))-((slider7.value/100)*(slider5.value));
   var tmp2 = (slider5.value / tmp) * slider5.value;
   slider8.value = tmp2;
-  
+
   }
 var slider1 = document.getElementById("myRange1");
 var slider2 = document.getElementById("myRange2");
@@ -139,4 +139,3 @@ slider8.oninput = function() {
 
 </body>
 </html>
-
